@@ -1,3 +1,10 @@
 import config from '@whoisfreire/eslint-config/node.mjs'
 
-export default [ ...config ]
+export default [
+  ...config,
+  {
+    rules: {
+      'no-undef': 'off'
+    }
+  }
+]
