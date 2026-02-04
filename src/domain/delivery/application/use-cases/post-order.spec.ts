@@ -13,7 +13,7 @@ describe('Post Order', () => {
 
   it('Should be able to post an order', async () => {
     const order = makeOrder({
-      receiver: 'example receiver'
+      receiver: 'example receiver',
     })
 
     const result = await sut.execute(order)
@@ -21,7 +21,7 @@ describe('Post Order', () => {
     expect(result.isRight()).toBe(true)
     expect(ordersRepository.orders[0]).toEqual(
       expect.objectContaining({
-        receiver: 'example receiver'
+        receiver: 'example receiver',
       })
     )
   })

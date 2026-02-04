@@ -12,10 +12,11 @@ export class Document {
   }
 
   constructor(value: string) {
-    if (documentValidator(value)) {
-      this.value = value
-    } else {
+    console.log(value)
+    if (!documentValidator(value)) {
       throw new Error('Invalid document')
     }
+
+    this.value = value
   }
 }
