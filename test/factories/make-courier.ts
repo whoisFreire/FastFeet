@@ -1,4 +1,5 @@
 import { UniqueEntityId } from '@/core/entities/value-objects/unique-entity-id'
+import { constants } from '@/core/utils/constants'
 import { Courier, CourierProps } from '@/domain/delivery/enterprise/entities/courier'
 import { Document } from '@/domain/delivery/enterprise/entities/value-objects/document'
 import { faker } from '@faker-js/faker'
@@ -11,7 +12,7 @@ export function makeCourier(
     {
       name: faker.person.fullName(),
       city: faker.location.city(),
-      document: new Document(faker.string.numeric(11)),
+      document: new Document(constants.fakeDocument),
       password: faker.internet.password(),
       createdAt: new Date(),
       ...override,
