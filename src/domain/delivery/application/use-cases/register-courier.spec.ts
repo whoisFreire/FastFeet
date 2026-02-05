@@ -1,5 +1,6 @@
 import { InMemoryCouriersRepository } from 'test/repositories/in-memory-couriers-repository'
 import { RegisterCourierUseCase } from './register-courier'
+import { constants } from '@/core/utils/constants'
 
 let couriersRepository: InMemoryCouriersRepository
 let sut: RegisterCourierUseCase
@@ -14,7 +15,7 @@ describe('Register Courier', () => {
     const result = await sut.execute({
       name: 'John Doe',
       city: 'New York',
-      document: '132.261.130-03',
+      document: constants.fakeDocument,
       password: '123456'
     })
 
@@ -26,5 +27,14 @@ describe('Register Courier', () => {
         password: '123456'
       })
     )
+  })
+
+  it('Should not be able to register a courier with wrong document', async () => {
+    await expect(sut.execute({
+      name: 'John Doe',
+      city: 'New York',
+      document: '1234567',
+      password: '123456'
+    })).rejects.toBeInstanceOf(Error)
   })
 })
